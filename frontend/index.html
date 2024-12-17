@@ -4,10 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carbon Footprint Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Hello</h1>
+    <div class="container my-4">
+        <header>
+            <h1>Carbon Footprint Calculator</h1>
+        </header>
+    
+        <div class="d-flex gap-4 mt-4">
+            <div class="card w-100">
+                <div class="card-header">
+                    <h3>Energy Usage</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Monthly Electricity Bill (€)</label>
+                        <input type="number" id="electricity" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Monthly Natural Gas Bill (€)</label>
+                        <input type="number" id="natural_gas" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Monthly Fuel Bill (€)</label>
+                        <input type="number" id="fuel" class="form-control">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="card w-100">
+                <div class="card-header">
+                    <h3>Waste</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Monthly Waste (kg)</label>
+                        <input type="number" id="waste_amount" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Recycling Percentage (%)</label>
+                        <input type="number" id="recycling_percentage" class="form-control">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="card w-100">
+                <div class="card-header">
+                    <h3>Business Travel</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Annual Business Travel (km)</label>
+                        <input type="number" id="kilometers" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Average Fuel Efficiency (L/100km)</label>
+                        <input type="number" id="fuel_efficiency" class="form-control">
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+        <div class="d-flex justify-content-center my-4">
+            <button class="btn btn-primary btn-lg" type="submit">Calculate</button>
+        </div>
+        <div id="chart">
+    
+        </div>
+    </div>
+   
     <script src="js/main.js"></script>
 </body>
 </html>

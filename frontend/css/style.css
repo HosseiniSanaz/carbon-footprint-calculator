@@ -1,0 +1,11 @@
+body{
+    background-color: #f2f7f4;
+}
+header{
+    color: #1f68a5;
+    text-align: center;
+}
+
+.card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
