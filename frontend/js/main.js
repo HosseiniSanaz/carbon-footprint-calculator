@@ -3,7 +3,7 @@ let footPrintResultsPieChart;
 
 function createChart(data) {
     // Show the full report when the api response is received
-    document.getElementById('foot_print_results').classList.remove('d-none');
+    document.getElementById('foot_print_report').classList.remove('d-none');
 
     // Destroy existing chart if it exists
     if (footPrintResultsChart) {
