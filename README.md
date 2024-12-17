@@ -7,9 +7,9 @@ A Python-based calculator that helps users estimate their carbon footprint based
 ## Features
 - Transportation emissions calculation
 - Household energy usage assessment
-- Dietary impact evaluation
-- Lifestyle choices analysis
-- Personalized recommendations for reducing carbon footprint
+- Waste emissions calculation
+- Energy emissions calculation
+- Total carbon footprint calculation
 
 ## Installation
 1. Clone the repository
