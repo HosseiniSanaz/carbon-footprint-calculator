@@ -1,3 +1,113 @@
+let footPrintResultsChart;
+let footPrintResultsPieChart;
+
+function createChart(data) {
+    // Show the full report when the api response is received
+    document.getElementById('foot_print_results').classList.remove('d-none');
+
+    // Destroy existing chart if it exists
+    if (footPrintResultsChart) {
+        footPrintResultsChart.destroy();
+    }
+    if (footPrintResultsPieChart) {
+        footPrintResultsPieChart.destroy();
+    }
+    // Show the results in the bar chart
+    const ctx = document.getElementById('footPrintResultsChart');
+    footPrintResultsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Energy', 'Waste', 'Travel'],
+            datasets: [{
+                label: 'Carbon Footprint (kg CO2)',
+                data: [
+                    data.energy,
+                    data.waste,
+                    data.travel
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 206, 86)',
+                    'rgb(153, 102, 255)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'kg CO2'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Carbon Footprint by Category'
+                }
+            }
+        }
+    });
+
+    // Show the results in the pie chart
+    const ctxPie = document.getElementById('footPrintResultsPieChart');
+    footPrintResultsPieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ['Energy', 'Waste', 'Travel'],
+            datasets: [{
+                data: [
+                    data.energy,
+                    data.waste,
+                    data.travel
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 206, 86)',
+                    'rgb(153, 102, 255)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Carbon Footprint Distribution'
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+
+    // Add text report at the bottom of the page to show the total carbon footprint and the breakdown by category
+    document.getElementById('report').innerHTML = `
+        <h4>Total Carbon Footprint: <b class="text-danger">${data.total.toFixed(2)} kg CO2</b></h4>
+        <div class="d-flex justify-content-between flex-column flex-md-row">
+            <p>Energy: <b class="text-danger">${data.energy.toFixed(2)} kg CO2</b></p>
+            <p>Waste: <b class="text-danger">${data.waste.toFixed(2)} kg CO2</b></p>
+            <p>Travel: <b class="text-danger">${data.travel.toFixed(2)} kg CO2</b></p>
+        </div>
+    `;
+}
 
 document.getElementById('calculate').addEventListener('click', async () => {
 
@@ -39,7 +149,9 @@ document.getElementById('calculate').addEventListener('click', async () => {
 
         const result = await response.json();
         console.log('result', result);
+        createChart(result);
     } catch (error) {
+        console.log('error', error);
         alert('Error:', error);
     }
 });
