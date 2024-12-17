@@ -1,9 +1,9 @@
 body{
     background-color: #f2f7f4;
 }
-header{
+
+.section-title{
     color: #1f68a5;
-    text-align: center;
 }
 
 .card {

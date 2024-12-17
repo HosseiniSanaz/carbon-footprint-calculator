@@ -8,68 +8,84 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container my-4">
-        <header>
-            <h1>Carbon Footprint Calculator</h1>
-        </header>
-    
-        <div class="d-flex gap-4 mt-4">
-            <div class="card w-100">
+    <div class="container my-4"> 
+        <div class="d-flex flex-column gap-4 mt-4">
+            <div class="card w-100 mb-2">
                 <div class="card-header">
-                    <h3>Energy Usage</h3>
+                    <h1>Carbon Footprint Calculator</h1>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label>Monthly Electricity Bill (€)</label>
-                        <input type="number" id="electricity" class="form-control">
+                    <h3 class="section-title mb-4">Energy Usage</h3>
+                    <div class="row mb-2">
+                        <div class="col-md-8">
+                            <label>What is your average monthly electricity bill in euros?(€)</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" id="electricity" class="form-control">
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label>Monthly Natural Gas Bill (€)</label>
-                        <input type="number" id="natural_gas" class="form-control">
+                    <div class="row mb-2">
+                        <div class="col-md-8">
+                            <label>What is your average monthly natural gas bill in euros?(€)</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" id="natural_gas" class="form-control">
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label>Monthly Fuel Bill (€)</label>
-                        <input type="number" id="fuel" class="form-control">
+                    <div class="row mb-2">
+                        <div class="col-md-8">
+                            <label>What is your average monthly fuel bill for transportation ineuros? (€)</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" id="fuel" class="form-control">
+                        </div>
                     </div>
-                </div>
-            </div>
-    
-            <div class="card w-100">
-                <div class="card-header">
-                    <h3>Waste</h3>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label>Monthly Waste (kg)</label>
-                        <input type="number" id="waste_amount" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label>Recycling Percentage (%)</label>
-                        <input type="number" id="recycling_percentage" class="form-control">
-                    </div>
-                </div>
-            </div>
-    
-            <div class="card w-100">
-                <div class="card-header">
-                    <h3>Business Travel</h3>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label>Annual Business Travel (km)</label>
-                        <input type="number" id="kilometers" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label>Average Fuel Efficiency (L/100km)</label>
-                        <input type="number" id="fuel_efficiency" class="form-control">
-                    </div>
-                </div>
-            </div>
-    
-        </div>
+                  
+                    <hr class="mt-4 mb-2">
 
-        <div class="d-flex justify-content-center my-4">
-            <button id="calculate" class="btn btn-primary btn-lg">Calculate</button>
+                    <h3 class="section-title mb-4">Waste</h3>
+                    <div class="row mb-2">
+                        <div class="col-md-8">
+                            <label>How much waste do you generate per month in kilograms?(kg)</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" id="waste_amount" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-8">
+                            <label>How much of that waste is recycled or composted (in percentage)? (%)</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" id="recycling_percentage" class="form-control">
+                        </div>
+                    </div>
+            
+                    <hr class="mt-4 mb-2">
+
+                    <h3 class="section-title mb-4">Business Travel</h3>
+                    <div class="row mb-2">
+                        <div class="col-md-8">
+                            <label>How many kilometers do your employees travel per year for business purposes? (km)</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" id="kilometers" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-8">
+                            <label>What is the average fuel efficiency of the vehicles used for business travel in liters per 100 kilometers? (L/100km)</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" id="fuel_efficiency" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                    <button id="calculate" class="btn btn-primary btn-lg">Calculate</button>
+                </div>
+            </div>
+    
         </div>
 
         <div class="card">
@@ -77,7 +93,7 @@
                 <h3>Results</h3>
             </div>
             <div class="card-body">
-                <canvas id="resultsChart"></canvas>
+               
             </div>
         </div>
     </div>
