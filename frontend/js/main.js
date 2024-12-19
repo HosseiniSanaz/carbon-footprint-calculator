@@ -1,7 +1,7 @@
 let footPrintResultsChart;
 let footPrintResultsPieChart;
 
-function createChart(data) {
+function generateReport(data) {
     // Show the full report when the api response is received
     document.getElementById('foot_print_report').classList.remove('d-none');
 
@@ -125,6 +125,12 @@ document.getElementById('calculate').addEventListener('click', async () => {
         alert('Recycling percentage must be between 0 and 100');
         return;
     }
+     // Check if fuel is greater than 0
+     if (document.getElementById('fuel').value <= 0) {
+        alert('Fuel must be greater than 0');
+        return;
+    }
+
 
     // Get data from the form
     const data = {
@@ -146,12 +152,18 @@ document.getElementById('calculate').addEventListener('click', async () => {
             },
             body: JSON.stringify(data)
         });
+        
+        // Check if the response has an error and throw an error
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error);
+        }
 
         const result = await response.json();
         console.log('result', result);
-        createChart(result);
+        generateReport(result);
     } catch (error) {
         console.log('error', error);
-        alert('Error:', error);
+        alert(error);
     }
 });
