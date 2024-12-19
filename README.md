@@ -17,6 +17,8 @@ A Python-based calculator that helps users estimate their carbon footprint based
 2. Run the application
     - Run the python script to install the dependencies and start the server
         - cd backend
+        - python3 -m venv venv  # Create virtual environment
+        - source venv/bin/activate  # Activate (use venv\Scripts\activate for Windows)
         - pip3 install -r requirements.txt
         - python3 app.py
     - Run the frontend
