@@ -7,6 +7,33 @@ def calculate():
     # Get the input data from the request
     input_data = request.json
     
+    # Validate that request has a body
+    if not input_data:
+        return jsonify({'error': 'No input data provided'}), 400
+    
+    # Required fields
+    required_fields = ['electricity', 'natural_gas', 'fuel', 'waste_amount', 
+                      'recycling_percentage', 'kilometers', 'fuel_efficiency']
+    
+    # Check if all required fields are present
+    for field in required_fields:
+        if field not in input_data:
+            return jsonify({'error': f'Missing required field: {field}'}), 400
+        
+    # Validate all values are greater than 0 (except recycling_percentage)
+    for field in required_fields:
+        if field != 'recycling_percentage':
+            if not isinstance(input_data[field], (int, float)) or input_data[field] < 0:
+                return jsonify({'error': f'{field} must be a positive number'}), 400
+    
+     # Validate fuel is greater than or equal to 0
+    if not (input_data['fuel'] > 0):
+        return jsonify({'error': 'Fuel must be greater than 0'}), 400
+
+    # Validate recycling_percentage is between 0 and 100
+    if not (0 <= input_data['recycling_percentage'] <= 100):
+        return jsonify({'error': 'Recycling percentage must be between 0 and 100'}), 400
+
     # Calculate Energy usage based on electricity, natural_gas and fuel bills
     energy_co2 = (
         (input_data['electricity'] * 0.0005) +
